@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-import api
+from api import api
 
 if __name__ == "__main__":
     api.run(debug=True)
