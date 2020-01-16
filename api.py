@@ -5,7 +5,7 @@ from flask import request
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
-@app.route('/send_data/<int:id>', methods=['GET'])
+@app.route('/data/<int:id>', methods=['GET'])
 def send_data(id):
   #returns the post, the post_id should be an int
   co2 = request.args['co2']
