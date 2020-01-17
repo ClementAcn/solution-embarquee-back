@@ -8,3 +8,8 @@ Se placer au préalable dans un environnement virtuel Python
 ```
 pip install -r requirements
 ```
+
+# Lancer l'application
+```
+python manage.py runserver
+```
