@@ -7,6 +7,7 @@ from .serializers import CaptureCO2Serializer
 
 # Create your views here.
 class CaptureCO2ViewSet(viewsets.ViewSet):
+
     def list(self, request):
         queryset = CaptureCO2.objects.all()
         serializer = CaptureCO2Serializer(queryset, many=True)
@@ -19,4 +20,6 @@ class CaptureCO2ViewSet(viewsets.ViewSet):
         return Response(serializer.data, status=200)
 
     def create(self, request):
-        pass
+        co2 = request.POST.get('value', 0)
+        salle = request.POST.get('salle')
+        CaptureCO2.objects.create(ppm=int(co2), capteur=salle)
