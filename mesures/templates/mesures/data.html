@@ -1,7 +1,7 @@
 {% if data %}
     <ul>
     {% for d in data %}
-        <li>Date : {{ d.date }} - Valeur : {{ d.ppm }} - Salle : {{ d.capteur }}</li>
+        <li>Date : {{ d.date }} - Valeur : {{ d.ppm }}ppm - Salle : {{ d.capteur }}</li>
     {% endfor %}
     </ul>
 {% else %}
