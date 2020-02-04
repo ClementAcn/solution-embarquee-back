@@ -24,3 +24,11 @@ class CaptureCO2ViewSet(viewsets.ViewSet):
         salle = request.GET.get('salle')
         CaptureCO2.objects.create(ppm=int(co2), capteur=salle)
         return Response('OK', status=201)
+
+
+class SendCaptureCO2ViewSet(viewsets.ViewSet):
+    def list(self, request):
+        co2 = request.GET.get('value', 0)
+        salle = request.GET.get('salle')
+        CaptureCO2.objects.create(ppm=int(co2), capteur=salle)
+        return Response('OK', status=201)
