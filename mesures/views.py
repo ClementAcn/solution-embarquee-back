@@ -9,7 +9,7 @@ from .serializers import CaptureCO2Serializer
 class CaptureCO2ViewSet(viewsets.ViewSet):
 
     def list(self, request):
-        queryset = CaptureCO2.objects.all()
+        queryset = CaptureCO2.objects.all().order_by('-date')
         serializer = CaptureCO2Serializer(queryset, many=True)
         return Response(serializer.data, status=200)
 
@@ -20,7 +20,7 @@ class CaptureCO2ViewSet(viewsets.ViewSet):
         return Response(serializer.data, status=200)
 
     def create(self, request):
-        co2 = request.POST.get('value', 0)
-        salle = request.POST.get('salle')
+        co2 = request.GET.get('value', 0)
+        salle = request.GET.get('salle')
         CaptureCO2.objects.create(ppm=int(co2), capteur=salle)
         return Response('OK', status=201)
