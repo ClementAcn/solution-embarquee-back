@@ -1,0 +1,9 @@
+{% if data %}
+    <ul>
+    {% for d in data %}
+        <li>Date : {{ d.date }} - Valeur : {{ d.ppm }} - Salle : {{ d.capteur }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
 
@@ -32,3 +33,8 @@ class SendCaptureCO2ViewSet(viewsets.ViewSet):
         salle = request.GET.get('salle')
         CaptureCO2.objects.create(ppm=int(co2), capteur=salle)
         return Response('OK', status=201)
+
+def vizualize(request):
+    queryset = CaptureCO2.objects.all().order_by('-date')
+    context = {'data': queryset}
+    return render(request, 'mesures/data.html', context)
